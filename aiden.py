@@ -100,41 +100,5 @@ class Web(object):
                 if len(config) >= 4:
                     break
         return config
-        tplKey= self.__tplKey
-        templetDir = os.path.join(self.documentRoot(),self.__templets)
-        tempdirs = os.listdir(templetDir)
-        for i in tempdirs:
-            if not i.find(tplKey) == -1:
-                return os.path.join(templetDir,i)
-    #网站用户的uid gid
-        user={}
-        user['name']= webuser.pw_name
-        user['uid']= webuser.pw_uid
-                if dbname:
-                    dbname = dbname.group(0)
-                    db_name = dbname.split('\'') if dbname.find("'")!=-1 else dbname.split('"')
-                    config['db_name'] = db_name[1]
-                    continue
-                dbuser = re.match("^\$cfg_dbuser.*;$",line.strip())
-                if dbuser:
-                    dbuser = dbuser.group(0)
-                    db_user = dbuser.split('\'') if dbuser.find("'")!=-1 else dbuser.split('"')
-                    config['db_user'] = db_user[1]
-                    continue
-                dbpwd = re.match("^\$cfg_dbpwd.*;$",line.strip())
-                if dbpwd:
-                    dbpwd = dbpwd.group(0)
-                    db_password = dbpwd.split('\'') if dbpwd.find("'")!=-1 else dbpwd.split('"')
-                    config['db_password'] = db_password[1]
-                    continue
-                dbprefix = re.match("^\$cfg_dbprefix.*;$",line.strip())
-                if dbprefix:
-                    dbprefix = dbprefix.group(0)
-                    db_prefix = dbprefix.split('\'') if dbprefix.find("'")!=-1 else dbprefix.split('"')
-                    config['db_prefix'] = db_prefix[1]
-                    continue
-                if len(config) >= 4:
-                    break
-        return config
 
 
